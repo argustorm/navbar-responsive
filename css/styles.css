@@ -1,0 +1,184 @@
+body {
+    background: #2196f3;
+    background: -webkit-linear-gradient(to right, #f44336, #2196f3);
+    background: linear-gradient(to right, #f44336, #2196f3);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+header {
+    background-color: black;
+    color: whitesmoke;
+    padding: 1em 0;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+/* DIV LOGO */
+
+.container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* LOGO */
+
+.logo {
+    float: left;
+    font-size: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.logo span {
+    font-weight: 300;
+}
+
+/* NAVBAR (MENU MOBILE) 
+******************************************************************************************/
+
+/* Color del Menu Mobile, alineación arriba y a la derecha */
+
+.site-nav {
+    background-color: #464655;
+    top: 100%;
+    right: 0;
+    position: absolute;
+    /* height: 0;
+    overflow: hidden; */
+    clip-path: circle(0px at top right);
+    transition: clip-path ease-in-out 700ms;
+}
+
+/* CLASE QUE CREO EN JS - Muestra el menu */
+
+.site-nav-open {
+    /* height: auto; */
+    clip-path: circle(150% at top right);
+}
+
+/* Modificación de la lista */
+
+.site-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Borde inferior en cada uno de los elementos de la lista */
+
+.site-nav li {
+    border-bottom: 1px solid black;
+}
+
+.site-nav li:last-child {
+    border-bottom: none;
+}
+
+/* Color de los elementos, ancho/alto de cada uno de ellos,
+   texto a mayúsculas y sin subrayado. 
+*/
+
+.site-nav a {
+    color: whitesmoke;
+    display: block;
+    padding: 2em 6em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* Cambia el color del hover y focus */
+
+.site-nav a:hover, .site-nav a:focus {
+    background-color: #e4b363;
+    color: #464655;
+}
+
+/* TOGGLE BUTTON (MENU MOBILE) 
+********************************/
+
+/* Posiciono el simbolo del menu toggle en la parte superior derecha */
+
+.menu-toggle {
+    /*     background-color: red; */
+    padding: 1em;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+/* CREO LA ANIMACIÓN AL ABRIR EL MENÚ */
+
+.menu-open .hamburger {
+    transform: rotate(45deg);
+}
+
+.menu-open .hamburger::before {
+    opacity: 0;
+}
+
+.menu-open .hamburger::after {
+    transform: translateY(-3px) rotate(-90deg);
+}
+
+/* Aquí es donde creo las 3 líneas del menu desplegable */
+
+.hamburger, .hamburger::after, .hamburger::before {
+    content: '';
+    display: block;
+    background-color: #ebebd3;
+    height: 3px;
+    width: 1.75em;
+    border-radius: 3px;
+}
+
+/* Creo la separación en el eje (Y) */
+
+.hamburger::before {
+    transform: translateY(-6px);
+}
+
+.hamburger::after {
+    transform: translateY(3px);
+}
+
+/* NAVBAR (DESKTOP) 
+******************************************************************************************/
+
+/* Asigno el punto de ruptura a los 700px */
+
+@media (min-width: 700px) {
+    /* Quito el menu desplegable */
+    .menu-toggle {
+        display: none;
+    }
+    /* Modifico navbar */
+    .site-nav {
+        height: auto;
+        position: relative;
+        background-color: transparent;
+        float: right;
+        margin-right: 10px;
+        clip-path: initial;
+    }
+    /* Alineo los elementos del nav y quito bordes */
+    .site-nav li {
+        display: inline-block;
+        border: none;
+    }
+    /* Quito el grosor y doy margen a los elementos */
+    .site-nav a {
+        padding: 0px;
+        margin-left: 3em;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+        background-color: transparent;
+    }
+}
